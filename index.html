@@ -386,15 +386,18 @@
 
         <div class="contact__container bd-grid">
           <form name="submit-to-google-sheet" class="contact__form">
-            <input type="text" name="Name" placeholder="Name" class="contact__input" />
-            <input type="mail" name="Email" placeholder="Email" class="contact__input" />
+            <input type="text" name="Name" required placeholder="Name" class="contact__input" />
+            <input type="mail" name="Email" required placeholder="Email" class="contact__input" />
+            <input type="tel" required maxlength="12" name="MobileNumber" placeholder="Mobile Number" class="contact__input" />
             <textarea
               name="Message"
               id=""
               cols="0"
               rows="10"
               class="contact__input"
+              placeholder="Feel free to leave your message here"
             ></textarea>
+            <input type="number" required name="Rate" class="contact__input" min="1" max="10" placeholder="Rate Portfolio Out of 10">
             <input
               type="submit"
               value="Connect"
@@ -402,6 +405,7 @@
             />
           </form>
           <div id="msg">
+            This may take a few seconds...
           </div>
         </div>
       </section>
@@ -446,6 +450,7 @@
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
           .then(response => {
             msg.innerHTML="Message sent Successfully !"
+            msg.style.color = "seagreen";
             setTimeout(function(){
              msg.innerHTML=""
             },5000)
